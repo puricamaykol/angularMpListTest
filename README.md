@@ -1,28 +1,47 @@
-# AngularMpListTest
+## What's this about? ##
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
+This is a sample project featuring a component I've been working on.
 
-## Development server
+MpList is the name of the component (I'll be turning it into a Module installable via NPM)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Current features: ##
 
-## Code scaffolding
+ - Fetch items from URL
+ - Specify the response object node containing items array. Otherwise, root is asume by default.
+ - Refresh list on URL change (asuming you're using parametter in a query string that are subscebtible to change)
+ - Build list from array
+ - Refresh list on data array change
+ - Emit event on item selection
+ - Emit event on data fetched
+ - Emit event on data not found
+ - Delete item method that might be called from template local variable
+ - You can define a list item unique id input 
+ - MpListItemDescriptionPipe (for now it prints a 'no description provided' message)
+ 
+  It implements ngOnChanges method. Since  OnChanges method gets triggered before OnInit and every Input is checked in the same order it is declared, I can set a flag (fromService) that let know the component the way it's supposed o behave regardless that all the other parameters are set at the same time.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/module`.
+  By default MpList will expect a URL to be provided. If , on the contrary, 'fromService' Input is set to false, it will ignore the URL and try to use 'arrayData' instead.
 
-## Build
+  MpList depends on https://material.angular.io
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+  It's currently formed by three files mp-list.component.ts, mp-list.component.html and mp-list.component.css
+## The road ahead ##
 
-## Running unit tests
+- Create a MpListModule
+- Make it installable via NPM
+- Emit event on ~~selected~~/checked
+- Implement items with icon
+- Implement items with lazy loaded thumbnails
+- Implement items with menu button
+- Allow multiple selection
+- Allow swippable items to delete them
+- Emit event on deleted item
+- Allow custom item and list template
+- Implement infinite scrolling
+- Implement pull down to refresh list items
+- Allow custom styles
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+----------
 
-## Running end-to-end tests
+marvel-heroes.component.ts is the component using MpList component, there you can find the two ways to use it (Service URL or Array)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

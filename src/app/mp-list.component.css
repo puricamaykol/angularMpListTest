@@ -1,0 +1,10 @@
+.mplistitem {
+	border:0.4px solid #ddd;
+}
+.mplistitem:hover {
+	background: #efefef;
+	cursor: pointer;
+}
+ .active {
+	background: #efefef;
+}

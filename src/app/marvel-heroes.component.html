@@ -1,0 +1,9 @@
+<h2>Marvel Heroes</h2>
+<button (click)="addItemTolist()">Add Item</button>
+<h3>From Array</h3>
+<mp-list #arrayMpList [fromService]="_fromService" [dataArray]="_dataArray" (onItemSelected)="_onArrayListItemSelected($event)" [listId]="_listFromArrayId"></mp-list>
+<button (click)="arrayMpList.deleteItem()">Delete Item From Template Local Variable</button>
+<h3>From Service</h3>
+<mp-list #serviceMpList [itemsLocation]="_itemsLocation" [url]="_url" (onItemSelected)="_onServiceListItemSelected($event)" [listId]="_listFromServiceId" >
+</mp-list>
+<button (click)="serviceMpList.deleteItem()">Delete Item From Template Local Variable</button>
