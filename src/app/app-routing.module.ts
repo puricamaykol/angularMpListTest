@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MarvelHeroesComponent }  from './marvel-heroes.component';
 
 const routes: Routes = [
-	{ path: '', redirectTo: '/marvel', pathMatch: 'full' },
+	{ path: '', component: MarvelHeroesComponent  },
   { path: 'marvel',     component: MarvelHeroesComponent }
 ];
 
