@@ -6,7 +6,7 @@
 <md-list>
  <md-list-item *ngFor="let item of items" class="mplistitem" (click)="onSelect(item)"
   [class.active]="item === _selectedItem"> 
- 	 <h4 md-line>{{item.name}}</h4>
+ 	 <h1 md-line>{{item.name}}</h1>
     <p md-line> {{item.description | mpListItemDescription}} </p>
  </md-list-item>
 </md-list>
