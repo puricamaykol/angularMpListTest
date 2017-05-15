@@ -44,6 +44,11 @@ export class MpList implements OnChanges {
    * @param {[type]} ) onItemsFetched = new EventEmitter<{}>( [description]
    */
   @Output() onItemsFetched = new EventEmitter<void>();
+  /**
+   * Event emitted whenever an item gets deleted
+   * @param {[type]} ) onItemsFetched = new EventEmitter<{}>( [description]
+   */
+  @Output() onItemDeleted = new EventEmitter<void>();
 
 
 
@@ -196,6 +201,7 @@ export class MpList implements OnChanges {
   public deleteItem(): void {
     let index = this.items.indexOf(this._selectedItem);
     if (index > -1) {
+      this.onItemDeleted.emit(this._selectedItem);
       this.items.splice(index, 1);
       this._selectedItem = {};
     }

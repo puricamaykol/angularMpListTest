@@ -39,8 +39,9 @@ MpList is the name of the component (I'll be turning it into a Module installabl
 - Allow custom item and list template
 - Implement infinite scrolling
 - Implement pull down to refresh list items
-- Allow custom styles
+- Allow custom styles (SASS mixins)
 - Implement Optional Search Box
+- Implement i18n
 
 ----------
 
