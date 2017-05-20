@@ -13,7 +13,7 @@ import { MpList }  from './mp-list.component';
 import { MaterialModule } from '@angular/material';
 
 import { MpListItemDescriptionPipe }  from './item-description.pipe';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
@@ -21,7 +21,8 @@ import { MpListItemDescriptionPipe }  from './item-description.pipe';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    BrowserAnimationsModule
 
   ],
   declarations: [

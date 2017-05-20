@@ -1,6 +1,8 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChange } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import { MdSnackBar } from '@angular/material';
+
 @Component({
   selector: 'mp-list',
   templateUrl: './mp-list.component.html',
@@ -68,13 +70,7 @@ export class MpList implements OnChanges {
 
   _listId: string = 'MpList';
 
-  // Spinner Configurations
-
-  _spinnerColor = 'primary';
-  _spinnerMode = 'indeterminate';
-  _spinnerProgressValue = 50;
-
-  constructor(private http: Http) { }
+  constructor(private http: Http, public snackBar: MdSnackBar) { }
   /**
    * This method retrieves an array of objects given an url
    * @param  {string}         url service url
@@ -92,6 +88,7 @@ export class MpList implements OnChanges {
    */
   private _buildListFromService(): void {
     let me = this;
+    me.items = [];
     me.getItems(me._url).then(function(items) {
       me.items = items;
       if (items.length > 0) {
@@ -204,8 +201,20 @@ export class MpList implements OnChanges {
       this.onItemDeleted.emit(this._selectedItem);
       this.items.splice(index, 1);
       this._selectedItem = {};
+    }else{
+      this.snackBar.open("No item selected", "", {
+        duration: 2000,
+      });
     }
   }
 
+  public getSelectedItem(): any{
+    return this._selectedItem;
+  }
 
+  public addItem(object: {}): void{
+    if(object){
+      this.items.push(object);
+    }
+  }
 }

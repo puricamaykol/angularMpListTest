@@ -1,11 +1,8 @@
-<md-progress-spinner *ngIf="items.length <= 0"
-        [color]="_spinnerColor"
-        [mode]="_spinnerMode"
-        [value]="_spinnerProgressValue">
-</md-progress-spinner>
+<md-progress-bar mode="query" *ngIf="items.length <= 0"></md-progress-bar>
 <md-list>
  <md-list-item *ngFor="let item of items" class="mplistitem" (click)="onSelect(item)"
-  [class.active]="item === _selectedItem"> 
+  [class.active]="item === _selectedItem">
+  	 <md-icon md-list-icon *ngIf="item.favorite">favorite</md-icon> 
  	 <h1 md-line>{{item.name}}</h1>
     <p md-line> {{item.description | mpListItemDescription}} </p>
  </md-list-item>
