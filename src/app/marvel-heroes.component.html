@@ -1,9 +1,28 @@
-<h2>Marvel Heroes</h2>
-<button (click)="addItemTolist()">Add Item</button>
-<h3>From Array</h3>
-<mp-list #arrayMpList [fromService]="_fromService" [dataArray]="_dataArray" (onItemSelected)="_onArrayListItemSelected($event)" [listId]="_listFromArrayId"></mp-list>
-<button (click)="arrayMpList.deleteItem()">Delete Item From Template Local Variable</button>
-<h3>From Service</h3>
-<mp-list #serviceMpList [itemsLocation]="_itemsLocation" [url]="_url" (onItemSelected)="_onServiceListItemSelected($event)" [listId]="_listFromServiceId" >
-</mp-list>
-<button (click)="serviceMpList.deleteItem()">Delete Item From Template Local Variable</button>
+<md-card>
+    <md-card-title>Marvel Heroes</md-card-title>
+    <md-tab-group>
+        <md-tab label="From Service">
+            <md-card-subtitle>Build a list from a service result object <a href="http://marvel.com">Data provided by Marvel. © 2017 MARVEL</a></md-card-subtitle>
+            <md-card-content>
+            <mp-list #serviceMpList [itemsLocation]="_itemsLocation" [url]="_url" (onItemSelected)="_onServiceListItemSelected($event)" [listId]="_listFromServiceId">
+            </mp-list>
+            </md-card-content>
+            <md-card-actions>
+                <button (click)="serviceMpList.deleteItem()" md-button>Delete</button>
+                <button (click)="serviceMpList.refreshList()" md-button>Refesh</button>
+                <button (click)="addNewItem(serviceMpList)" md-button>+Item</button>
+            </md-card-actions>
+        </md-tab>
+        <md-tab label="From Array">
+            <md-card-subtitle>Build a list from Array</md-card-subtitle>
+            <md-card-content>
+            <mp-list #arrayMpList [fromService]="_fromService" [dataArray]="_dataArray" (onItemSelected)="_onArrayListItemSelected($event)" [listId]="_listFromArrayId"></mp-list>
+            </md-card-content>
+            <md-card-actions>
+                <button (click)="arrayMpList.deleteItem()" md-button>Delete</button>
+                <button (click)="addDescItemTolist()" md-button>+Item</button>
+                <button (click)="addNoDescItemTolist()" md-button>+Item No Desc.</button>
+            </md-card-actions>
+        </md-tab>
+    </md-tab-group>
+</md-card>
