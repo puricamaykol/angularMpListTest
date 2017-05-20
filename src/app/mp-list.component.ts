@@ -50,7 +50,7 @@ export class MpList implements OnChanges {
    * Event emitted whenever an item gets deleted
    * @param {[type]} ) onItemsFetched = new EventEmitter<{}>( [description]
    */
-  @Output() onItemDeleted = new EventEmitter<void>();
+  @Output() onItemDeleted = new EventEmitter<{}>();
 
 
 
