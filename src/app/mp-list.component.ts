@@ -54,7 +54,7 @@ export class MpList implements OnChanges {
 
 
 
-  items: any[] = [];
+  public items: any[] = [];
 
   _url: string = '';
 

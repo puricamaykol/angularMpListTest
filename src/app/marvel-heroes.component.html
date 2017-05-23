@@ -1,23 +1,24 @@
+<md-toolbar>
+    <button md-icon-button [mdMenuTriggerFor]="menu">
+        <md-icon>more_vert</md-icon>
+    </button> MpList Samples</md-toolbar>
 <md-menu #menu="mdMenu">
-    <button md-menu-item>
-        <md-icon>help</md-icon>
-        <a href="https://github.com/puricamaykol/angularMpListTest/blob/master/README.md"  target="_blank">About</a>
+    <button md-menu-item (click)="goToAbout()">
+        <md-icon>help</md-icon>About
     </button>
-    <button md-menu-item>
-        <md-icon>group</md-icon>
-        <a href="https://www.linkedin.com/in/maykolpurica/" target="_blank">My LinkedIn</a>
+    <button md-menu-item (click)="goToLinkedIn()">
+        <md-icon>group</md-icon>My LinkedIn
     </button>
 </md-menu>
 <md-card>
     <md-card-title>
-        <button md-icon-button [mdMenuTriggerFor]="menu">
-            <md-icon>more_vert</md-icon>
-        </button> Marvel Heroes</md-card-title>
+        Marvel Heroes</md-card-title>
     <md-tab-group>
         <md-tab label="From Service">
             <md-card-subtitle>Build a list from a service result object <a href="http://marvel.com">Data provided by Marvel. © 2017 MARVEL</a></md-card-subtitle>
             <md-card-content>
-                <mp-list #serviceMpList [itemsLocation]="_itemsLocation" [url]="_url" (onItemSelected)="_onServiceListItemSelected($event)" [listId]="_listFromServiceId">
+                <app-hero-detail #heroDetail></app-hero-detail>
+                <mp-list #serviceMpList [itemsLocation]="_itemsLocation" [url]="_url" (onItemSelected)="heroDetail.setDetail(serviceMpList)" [listId]="_listFromServiceId">
                 </mp-list>
             </md-card-content>
             <md-card-actions>

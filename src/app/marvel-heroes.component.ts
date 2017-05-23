@@ -66,4 +66,18 @@ export class MarvelHeroesComponent implements OnInit {
     object.addItem({ "name": "Test Item ", "description": "Item description" });
     }
 
+  goToLinkedIn(): void{
+    console.log("linkedin");
+    //https://www.linkedin.com/in/maykolpurica/
+
+  window.open("https://www.linkedin.com/in/maykolpurica/", "_blank");
+  }
+  goToAbout(): void{
+    //https://github.com/puricamaykol/angularMpListTest/blob/master/README.md
+    window.open("https://github.com/puricamaykol/angularMpListTest/blob/master/README.md", "_blank");
+  }
+
+  viewDetails(): void{
+    
+  }
 }

@@ -14,6 +14,7 @@ import { MaterialModule } from '@angular/material';
 
 import { MpListItemDescriptionPipe }  from './item-description.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     MarvelHeroesComponent,
     MpList,
-    MpListItemDescriptionPipe
+    MpListItemDescriptionPipe,
+    HeroDetailComponent,
   ],
   bootstrap: [ AppComponent ]
 })
