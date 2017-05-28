@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChange } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, RequestOptions, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { MdSnackBar } from '@angular/material';
 
@@ -23,6 +23,10 @@ export class MpList implements OnChanges {
   *  @example 'data.results' 
   */
   @Input() itemsLocation: string = '';
+  /**
+   * Headers to be sent with HTTP request
+   */
+  @Input() headers: {}[] = [];
   /**
    * Input: Service base url
    */
@@ -56,6 +60,8 @@ export class MpList implements OnChanges {
 
   public items: any[] = [];
 
+  _headers: {}[] = [];
+
   _url: string = '';
 
   _itemsLocationTree: string[] = [];
@@ -78,7 +84,10 @@ export class MpList implements OnChanges {
    */
   private getItems(url: string): Promise<any[]> {
     let me = this;
-    return this.http.get(url)
+    let customHeaders: Headers = new Headers();
+    me._headers.map(header=>Object.keys(header).forEach(key=>customHeaders.append(key,header[key])));
+    let options = new RequestOptions({ headers: customHeaders });
+    return this.http.get(url, options)
       .toPromise()
       .then(response => me.getItemsArray(response.json()))
       .catch(this.handleError);
@@ -127,6 +136,9 @@ export class MpList implements OnChanges {
         }
 
       }
+      if (propName === 'headers' && me._fromService) {
+        me._headers = changedProp.currentValue;
+      }
       if (propName === 'url' && me._fromService) {
         me._url = changedProp.currentValue;
         me._buildListFromService();
@@ -137,11 +149,11 @@ export class MpList implements OnChanges {
 
     }
   }
-    /**
-     * Error handler for the HTTP request
-     * @param  {any}          error 
-     * @return {Promise<any>}  
-     */
+  /**
+   * Error handler for the HTTP request
+   * @param  {any}          error 
+   * @return {Promise<any>}  
+   */
   private handleError(error: any): Promise<any> {
     return Promise.reject(error.message || error);
   }
@@ -201,19 +213,19 @@ export class MpList implements OnChanges {
       this.onItemDeleted.emit(this._selectedItem);
       this.items.splice(index, 1);
       this._selectedItem = {};
-    }else{
+    } else {
       this.snackBar.open("No item selected", "", {
         duration: 2000,
       });
     }
   }
 
-  public getSelectedItem(): any{
+  public getSelectedItem(): any {
     return this._selectedItem;
   }
 
-  public addItem(object: {}): void{
-    if(object){
+  public addItem(object: {}): void {
+    if (object) {
       this.items.push(object);
     }
   }
