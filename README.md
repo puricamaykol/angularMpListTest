@@ -1,24 +1,24 @@
 ## What's this about? ##
 
-This is a sample project featuring a component I've been working on.
-
-MpList is the name of the component (I'll be turning it into a Module installable via NPM)
+This is a sample project featuring a component I've been working on, called MpList (I'll be turning it into a Module installable via NPM). 
 
 ## Current features: ##
 
- - Fetch items from URL
+ - Fetch items from URL.
  - Specify the response object node containing items array. Otherwise, root is asume by default.
- - Refresh list on URL change (asuming you're using parametter in a query string that are subscebtible to change)
- - Build list from array
- - Refresh list on data array change
- - Emit event on item selection
- - Emit event on data fetched
- - Emit event on data not found
- - Delete item method that might be called from template local variable
- - You can define a list item unique id input 
- - MpListItemDescriptionPipe (for now it prints a 'no description provided' message)
+ - Refresh list on URL change (asuming you're using parametter in a query string that are subscebtible to change).
+ - Build list from array.
+ - Refresh list on data array change.
+ - Emit event on item selection.
+ - Emit event on data fetched.
+ - Emit event on data not found.
+ - You can define a list item unique id input, defaults to 'MpList' otherwise.
+ - MpListItemDescriptionPipe (for now it prints a 'no description provided' message).
+ - Refresh list using refreshList() method through local component variable.
+ - Delete item method that might be called from template local variable.
+
  
-  It implements ngOnChanges method. Since  OnChanges method gets triggered before OnInit and every Input is checked in the same order it is declared, I can set a flag (fromService) that let know the component the way it's supposed o behave regardless that all the other parameters are set at the same time.
+  It implements ngOnChanges method. Since  ngOnChanges method gets triggered before OnInit and every Input is checked in the same order it is declared, it was possible to set a flag (fromService) that lets the component know  the way it's supposed to behave regardless that all the other parameters are set at the same time.
 
   By default MpList will expect a URL to be provided. If , on the contrary, 'fromService' Input is set to false, it will ignore the URL and try to use 'arrayData' instead.
 
