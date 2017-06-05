@@ -103,10 +103,16 @@ List from static array
 
 **In your template:**
 
-    <mp-list #arrayMpList [fromService]="_fromService" [dataArray]="_dataArray" (onItemSelected)="_onArrayListItemSelected($event)" [listId]="_listFromArrayId"></mp-list>
+    <mp-list #arrayMpList 
+    [fromService]="_fromService" 
+    [dataArray]="_dataArray" 
+    (onItemSelected)="_onArrayListItemSelected($event)" 
+    [listId]="_listFromArrayId">
+    </mp-list>
+    
 	<button (click)="arrayMpList.deleteItem()">Delete</button>
-        <button (click)="addDescItemTolist()">+Item</button>
-        <button (click)="addNoDescItemTolist()">+Item No Desc.</button>
+    <button (click)="addDescItemTolist()">+Item</button>
+    <button (click)="addNoDescItemTolist()">+Item No Desc.</button>
 
 
 > You can add new items just by pushing new objects to the data array. 
