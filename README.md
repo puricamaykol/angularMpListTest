@@ -109,7 +109,6 @@ List from static array
     (onItemSelected)="_onArrayListItemSelected($event)" 
     [listId]="_listFromArrayId">
     </mp-list>
-
 	<button (click)="arrayMpList.deleteItem()">Delete</button>
     <button (click)="addDescItemTolist()">+Item</button>
     <button (click)="addNoDescItemTolist()">+Item No Desc.</button>
