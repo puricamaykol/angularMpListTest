@@ -55,35 +55,35 @@ Usage Examples
 List From Service
 
 **In you component class:**
-
+```javascript
     //Dot separated string representing items array location inside service response
     _itemsLocation: string = "data.results";  
     _url: string = "https://gateway.marvel.com:443/v1/public/characters?..";
     _listFromServiceId: string = "listFromService";
-
+```
 **In your template:** 
-
+```html
     <app-hero-detail #heroDetail></app-hero-detail>
     <mp-list #serviceMpList [itemsLocation]="_itemsLocation" [url]="_url" (onItemSelected)="heroDetail.setDetail(serviceMpList)" [listId]="_listFromServiceId"></mp-list>
     <button (click)="serviceMpList.deleteItem()" md-button>Delete</button>
     <button (click)="serviceMpList.refreshList()" md-button>Refesh</button>
     <button (click)="addNewItem(serviceMpList)" md-button>+Item</button>
-
+```
 As you can see app-hero-detail component has a setDetail method to which I'm passing a reference to my list component (I still don't know how much of a bad practice this is, but it was the way I found to successfully comunicate sibling components).
 
 mpListComponent exposes a refresh and delete method. Both of them can be used from template local variables. refreshList() method only works when fromService property is set to true (this is its default value).
 
 To add items to the list generated from service you can create a method in your controller that recieves a reference to mpList component so it can access mpList addItem( ) method like this:
 
-
+```javascript
     addNewItem(object: any): void {
         object.addItem({ "name": "Test Item ", "description": "Item description" });
       }
-
+```
 List from static array
 
 **In your controller:**
-
+```javascript
     public addNoDescItemTolist(): void {
         this.addItemTolist(false);
       }
@@ -99,21 +99,21 @@ List from static array
         this._dataArray.push({ "name": "Test Item #" + count, "description": itemDescription });
     
       }
-    
+```    
 
 **In your template:**
-
+```html
     <mp-list #arrayMpList 
     [fromService]="_fromService" 
     [dataArray]="_dataArray" 
     (onItemSelected)="_onArrayListItemSelected($event)" 
     [listId]="_listFromArrayId">
     </mp-list>
-    
+
 	<button (click)="arrayMpList.deleteItem()">Delete</button>
     <button (click)="addDescItemTolist()">+Item</button>
     <button (click)="addNoDescItemTolist()">+Item No Desc.</button>
-
+```
 
 > You can add new items just by pushing new objects to the data array. 
 > Delete method splice selected object out of the data array. 
