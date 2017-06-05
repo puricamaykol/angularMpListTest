@@ -64,7 +64,12 @@ List From Service
 **In your template:** 
 ```html
     <app-hero-detail #heroDetail></app-hero-detail>
-    <mp-list #serviceMpList [itemsLocation]="_itemsLocation" [url]="_url" (onItemSelected)="heroDetail.setDetail(serviceMpList)" [listId]="_listFromServiceId"></mp-list>
+    <mp-list #serviceMpList 
+    [itemsLocation]="_itemsLocation" 
+    [url]="_url" 
+    (onItemSelected)="heroDetail.setDetail(serviceMpList)" 
+    [listId]="_listFromServiceId">
+    </mp-list>
     <button (click)="serviceMpList.deleteItem()" md-button>Delete</button>
     <button (click)="serviceMpList.refreshList()" md-button>Refesh</button>
     <button (click)="addNewItem(serviceMpList)" md-button>+Item</button>
