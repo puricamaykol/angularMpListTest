@@ -52,12 +52,12 @@ marvel-heroes.component.ts is the component using MpList component, there you ca
 Usage Examples
 --------------
 
-####List From Service
+List From Service
 
 **In you component class:**
 
-    //Dot separated string representing items
-    _itemsLocation: string = "data.results";  array location inside service response
+    //Dot separated string representing items array location inside service response
+    _itemsLocation: string = "data.results";  
     _url: string = "https://gateway.marvel.com:443/v1/public/characters?..";
     _listFromServiceId: string = "listFromService";
 
@@ -80,7 +80,7 @@ To add items to the list generated from service you can create a method in your 
         object.addItem({ "name": "Test Item ", "description": "Item description" });
       }
 
-####List from static array
+List from static array
 
 **In your controller:**
 
