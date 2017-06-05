@@ -109,5 +109,5 @@ List from static array
         <button (click)="addNoDescItemTolist()">+Item No Desc.</button>
 
 
-You can add new items just push new objects to the data array. 
-Delete method splice selected object out of the data array. 
+> You can add new items just by pushing new objects to the data array. 
+> Delete method splice selected object out of the data array. 
