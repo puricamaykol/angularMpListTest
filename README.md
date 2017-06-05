@@ -47,3 +47,67 @@ This is a sample project featuring a component I've been working on, called MpLi
 
 marvel-heroes.component.ts is the component using MpList component, there you can find the two ways to use it (Service URL or Array)
 
+----------
+
+Usage Examples
+--------------
+
+####List From Service
+
+**In you component class:**
+
+    //Dot separated string representing items
+    _itemsLocation: string = "data.results";  array location inside service response
+    _url: string = "https://gateway.marvel.com:443/v1/public/characters?..";
+    _listFromServiceId: string = "listFromService";
+
+**In your template:** 
+
+    <app-hero-detail #heroDetail></app-hero-detail>
+    <mp-list #serviceMpList [itemsLocation]="_itemsLocation" [url]="_url" (onItemSelected)="heroDetail.setDetail(serviceMpList)" [listId]="_listFromServiceId"></mp-list>
+    <button (click)="serviceMpList.deleteItem()" md-button>Delete</button>
+    <button (click)="serviceMpList.refreshList()" md-button>Refesh</button>
+    <button (click)="addNewItem(serviceMpList)" md-button>+Item</button>
+
+As you can see app-hero-detail component has a setDetail method to which I'm passing a reference to my list component (I still don't know how much of a bad practice this is, but it was the way I found to successfully comunicate sibling components).
+
+mpListComponent exposes a refresh and delete method. Both of them can be used from template local variables. refreshList() method only works when fromService property is set to true (this is its default value).
+
+To add items to the list generated from service you can create a method in your controller that recieves a reference to mpList component so it can access mpList addItem( ) method like this:
+
+
+    addNewItem(object: any): void {
+        object.addItem({ "name": "Test Item ", "description": "Item description" });
+      }
+
+####List from static array
+
+**In your controller:**
+
+    public addNoDescItemTolist(): void {
+        this.addItemTolist(false);
+      }
+      public addDescItemTolist(): void {
+        this.addItemTolist(true);
+      }
+      private addItemTolist(hasDescription: boolean): void {
+        let itemDescription = '';
+        if (hasDescription) {
+          itemDescription = 'Items description';
+        }
+        let count = this._dataArray.length + 1;
+        this._dataArray.push({ "name": "Test Item #" + count, "description": itemDescription });
+    
+      }
+    
+
+**In your template:**
+
+    <mp-list #arrayMpList [fromService]="_fromService" [dataArray]="_dataArray" (onItemSelected)="_onArrayListItemSelected($event)" [listId]="_listFromArrayId"></mp-list>
+	<button (click)="arrayMpList.deleteItem()">Delete</button>
+        <button (click)="addDescItemTolist()">+Item</button>
+        <button (click)="addNoDescItemTolist()">+Item No Desc.</button>
+
+
+You can add new items just push new objects to the data array. 
+Delete method splice selected object out of the data array. 
