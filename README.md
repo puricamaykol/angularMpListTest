@@ -58,6 +58,12 @@ List from static array
 
 **In your controller:**
 ```javascript
+    _dataArray: any[] = [
+        { "itemId": 1, "name": "Adam Warlock", "description": "Adam Warlock is an artificially created human who was born in a cocoon at a scientific complex called The Beehive." },
+        { "itemId": 2, "name": "Agent X (Nijo)", "description": " Originally a partner of the mind-altering assassin Black Swan, Nijo spied on Deadpool as part of the Swan's plan to exact revenge for Deadpool falsely taking credit for the Swan's assassination of the Four Winds crime family, which included Nijo's brother" },
+        { "itemId": 3, "name": "item 3 de prueba", "description": "Descripción del item 3" },
+      ];
+  
     public addNoDescItemTolist(): void {
         this.addItemTolist(false);
       }
