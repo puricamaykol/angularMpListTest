@@ -1,4 +1,6 @@
-## What's this about? ##
+[Live Demo Here!](https://puricamaykol.github.io/angularMpListTest/dist)
+
+## What's this about? ## 
 
 This is a sample project featuring a component I've been working on, called MpList (I'll be turning it into a Module installable via NPM).
 
@@ -48,6 +50,20 @@ This is a sample project featuring a component I've been working on, called MpLi
 marvel-heroes.component.ts is the component using MpList component, there you can find the two ways to use it (Service URL or Array)
 
 ----------
+
+Run the Demo
+--------------
+
+You should install angular cli via NPM. Then:
+
+```bash
+	git clone https://github.com/puricamaykol/angularMpListTest.git
+	cd angularMpListTest
+	npm install
+	ng serve
+```
+
+
 
 Usage Examples
 --------------
